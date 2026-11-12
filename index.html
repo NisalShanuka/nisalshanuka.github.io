@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nisal Shanuka Perera · Sound engineer and software developer</title>
-<meta name="description" content="Nisal Shanuka Perera: live sound engineer at PYRAMIDZ, senior software, game and web developer, and owner of NS Productions. Based in Ragama, Sri Lanka.">
+<meta name="description" content="Nisal Shanuka Perera: live sound engineer at PYRAMIDZ and senior software, game and web developer at ntoolz.net. Trading automation, VPN infrastructure and websites. Ragama, Sri Lanka.">
 <meta name="theme-color" content="#05070C">
 <meta property="og:title" content="Nisal Shanuka Perera · Sound engineer and software developer">
-<meta property="og:description" content="Live sound engineer at PYRAMIDZ. Senior software, game and web developer. Owner of NS Productions.">
+<meta property="og:description" content="Live sound engineer at PYRAMIDZ. Senior software, game and web developer at ntoolz.net. Owner of NS Productions.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://nisalshanuka.github.io/">
 <meta property="og:image" content="https://nisalshanuka.github.io/assets/og.jpg">
@@ -23,6 +23,15 @@
 <link rel="preload" as="image" href="assets/nisal-seated-m.webp" media="(max-width: 760px)">
 <link rel="stylesheet" href="scrollcraft.css">
 <link rel="stylesheet" href="site.css">
+<script>
+  /* Motion gates, set before first paint so nothing flashes. */
+  (function (d) {
+    var c = d.documentElement.classList; c.add('js');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = false; try { seen = sessionStorage.getItem('ns-intro') === '1'; } catch (e) {}
+    if (!reduce && !seen) c.add('intro-on');
+  })(document);
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +40,12 @@
   "url": "https://nisalshanuka.github.io/",
   "image": "https://nisalshanuka.github.io/assets/og.jpg",
   "jobTitle": ["Live Sound Engineer", "Senior Software Engineer", "Game Developer", "Web Developer"],
-  "knowsAbout": ["Live sound engineering", "Audio post production", "Software engineering", "Game development", "Web development"],
-  "worksFor": [{"@type": "Organization", "name": "PYRAMIDZ"}, {"@type": "Organization", "name": "NS Productions"}],
+  "knowsAbout": ["Live sound engineering", "Audio post production", "Software engineering", "Trading automation", "VPN infrastructure", "Game development", "FiveM", "Web development"],
+  "worksFor": [
+    {"@type": "Organization", "name": "PYRAMIDZ"},
+    {"@type": "Organization", "name": "ntoolz.net", "url": "https://ntoolz.net"},
+    {"@type": "Organization", "name": "NS Productions"}
+  ],
   "alumniOf": {"@type": "EducationalOrganization", "name": "Christ King College"},
   "homeLocation": {"@type": "Place", "name": "Ragama, Sri Lanka"},
   "sameAs": [
@@ -48,6 +61,16 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Intro: a short title card that lifts away. Session-once, never under reduced motion. -->
+<div class="intro" aria-hidden="true">
+  <div class="intro__in">
+    <span class="intro__mark">NS</span>
+    <span class="intro__name"><span>Nisal Shanuka Perera</span></span>
+    <span class="intro__line"><i></i></span>
+    <span class="intro__roles"><span>Sound engineer · Developer</span></span>
+  </div>
+</div>
+
 <header class="bar">
   <div class="bar__in">
     <a class="brand" href="#top" aria-label="Nisal Shanuka Perera, back to top">
@@ -56,59 +79,81 @@
     </a>
     <nav class="bar__nav" aria-label="Sections">
       <a href="#services">Services</a>
-      <a href="#experience">Experience</a>
       <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn--sm" href="#contact">Get in touch</a>
+    <a class="btn btn--sm" href="#contact" data-sc-magnet="0.25">Get in touch</a>
   </div>
+  <span class="bar__progress" aria-hidden="true"></span>
 </header>
 
 <main id="main">
 
 <!-- ============================================================ HERO -->
-<section id="top" class="hero" data-sc-act="flow">
-  <div class="wrap hero__grid">
-    <div class="hero__copy" data-sc-in data-sc-stagger="70">
-      <h1 class="hero__title">Live sound engineer and senior software developer.</h1>
-      <p class="hero__lede">I'm Nisal Shanuka Perera. I mix live shows for PYRAMIDZ, handle audio post production, and build software, games and websites. I also run my own company, NS Productions.</p>
-      <div class="hero__ctas">
-        <a class="btn" href="#contact">Get in touch</a>
-        <a class="btn btn--ghost" href="#services">View services</a>
+<section id="top" class="hero" data-sc-act="pin" data-sc-span="1.35">
+  <div class="hero__stage" data-sc-stage>
+    <canvas class="signal" aria-hidden="true"></canvas>
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__title">
+          <span class="ln"><span>Live sound engineer</span></span>
+          <span class="ln"><span>and senior software</span></span>
+          <span class="ln"><span>developer.</span></span>
+        </h1>
+        <p class="hero__lede rise" style="--d:.55s">I'm Nisal Shanuka Perera. I mix live shows for PYRAMIDZ, handle audio post production, and build software, games and websites under <a class="inline" href="https://ntoolz.net" target="_blank" rel="noopener">ntoolz.net</a>.</p>
+        <div class="hero__ctas rise" style="--d:.68s">
+          <a class="btn" href="#work" data-sc-magnet="0.3">See my work</a>
+          <a class="btn btn--ghost" href="#contact" data-sc-magnet="0.3">Get in touch</a>
+        </div>
+        <dl class="facts rise" style="--d:.8s">
+          <div><dt>Live sound</dt><dd>Sound Engineer, PYRAMIDZ</dd></div>
+          <div><dt>Studio</dt><dd>Founder and developer, ntoolz.net</dd></div>
+          <div><dt>Company</dt><dd>Owner and CEO, NS Productions</dd></div>
+        </dl>
       </div>
-      <dl class="facts">
-        <div><dt>Current role</dt><dd>Live Sound Engineer, PYRAMIDZ</dd></div>
-        <div><dt>Company</dt><dd>Owner and CEO, NS Productions</dd></div>
-        <div><dt>Development</dt><dd>Software, games and web</dd></div>
-      </dl>
-    </div>
 
-    <figure class="portrait" data-sc-in>
-      <div class="portrait__frame">
-        <picture data-sc-parallax="-0.06">
-          <source media="(max-width: 760px)" srcset="assets/nisal-seated-m.webp">
-          <img src="assets/nisal-seated.webp" width="613" height="1600" alt="Nisal Shanuka Perera in a dark suit, seated" fetchpriority="high">
-        </picture>
-      </div>
-      <figcaption class="portrait__cap">
-        <span>Nisal Shanuka Perera</span>
-        <span class="mono">Ragama, Sri Lanka</span>
-      </figcaption>
-    </figure>
+      <figure class="portrait">
+        <div class="portrait__frame" data-sc-tilt="5">
+          <picture>
+            <source media="(max-width: 760px)" srcset="assets/nisal-seated-m.webp">
+            <img src="assets/nisal-seated.webp" width="613" height="1600" alt="Nisal Shanuka Perera in a dark suit, seated" fetchpriority="high">
+          </picture>
+        </div>
+        <figcaption class="portrait__cap">
+          <span>Nisal Shanuka Perera</span>
+          <span class="mono">Ragama, Sri Lanka</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
+
+<!-- Tech ticker: two rows, scroll velocity drives the speed and direction. -->
+<div class="ticker" aria-label="Tools I work with">
+  <div class="ticker__row" data-speed="1">
+    <ul class="ticker__track">
+      <li>Live sound</li><li>Audio post production</li><li>Python</li><li>FastAPI</li><li>Go</li><li>React</li><li>TypeScript</li><li>PostgreSQL</li><li>Redis</li><li>Docker</li><li>Lua</li><li>FiveM</li>
+    </ul>
+  </div>
+  <div class="ticker__row ticker__row--alt" data-speed="-0.7" aria-hidden="true">
+    <ul class="ticker__track">
+      <li>Telegram bots</li><li>PWA</li><li>Xray</li><li>Vite</li><li>Cloudflare</li><li>Linux servers</li><li>GitHub Actions</li><li>Playwright</li><li>Reels</li><li>Mixing</li><li>Mastering</li><li>Websites</li>
+    </ul>
+  </div>
+</div>
 
 <!-- ============================================================ SERVICES -->
 <!-- Signature move: the crossfader. Scroll slides it from the audio desk to the code desk. -->
 <section id="services" class="section services" data-sc-act="flow">
   <div class="wrap">
-    <header class="head" data-sc-in>
-      <h2 class="h2">Two disciplines, one standard of detail.</h2>
-      <p class="head__lede">Most of my week is split between the mixing desk and the code editor. Both come down to the same thing: getting every detail right before anyone else hears or uses it.</p>
+    <header class="head">
+      <h2 class="h2 split-lines">Two disciplines, one standard of detail.</h2>
+      <p class="head__lede" data-sc-in>Most of my week is split between the mixing desk and the code editor. Both come down to the same thing: getting every detail right before anyone else hears or uses it.</p>
     </header>
 
     <div class="svc">
-      <article class="svc__col svc__col--audio" data-sc-in data-sc-stagger="60">
+      <article class="svc__col svc__col--audio" data-sc-in data-sc-stagger="70">
         <header class="svc__head">
           <h3>Audio</h3>
           <span class="mono">Sound engineering</span>
@@ -127,63 +172,211 @@
         </div>
       </article>
 
-      <article class="svc__col svc__col--dev" data-sc-in data-sc-stagger="60">
+      <article class="svc__col svc__col--dev" data-sc-in data-sc-stagger="70">
         <header class="svc__head">
           <h3>Development</h3>
-          <span class="mono">Senior developer</span>
+          <span class="mono">ntoolz.net</span>
         </header>
         <div class="svc__item">
           <h4>Software engineering</h4>
-          <p>Reliable systems and tools, written to be maintained by the next person who opens the code.</p>
+          <p>Production systems that handle money and live traffic: trading automation, VPN infrastructure, bots and admin panels.</p>
         </div>
         <div class="svc__item">
           <h4>Game development</h4>
-          <p>Gameplay, game feel and audio, built together from the first prototype.</p>
+          <p>FiveM roleplay servers scripted in Lua, and the websites their communities run on.</p>
         </div>
         <div class="svc__item">
           <h4>Web development</h4>
-          <p>Fast, accessible websites, from the first sketch to launch.</p>
+          <p>Fast, accessible websites and installable web apps, from the first sketch to launch.</p>
         </div>
       </article>
     </div>
 
     <div class="fader" aria-hidden="true">
       <span class="mono">Audio</span>
-      <span class="fader__track"><span class="fader__cap"></span></span>
+      <span class="fader__track"><span class="fader__fill"></span><span class="fader__cap"></span></span>
       <span class="mono">Development</span>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ EXPERIENCE -->
-<section id="experience" class="section" data-sc-act="flow">
-  <div class="wrap split">
-    <header class="head" data-sc-in>
-      <h2 class="h2">Where I work.</h2>
+<!-- ============================================================ WORK INTRO -->
+<section id="work" class="section work-intro" data-sc-act="flow">
+  <div class="wrap work-intro__grid">
+    <h2 class="h2 h2--xl split-lines">Selected work from ntoolz.net.</h2>
+    <div class="work-intro__side" data-sc-in>
+      <p class="head__lede">ntoolz.net is where I design, build and run software. These are live products with real users, plus websites built for clients and communities.</p>
+      <a class="btn btn--ghost" href="https://ntoolz.net" target="_blank" rel="noopener" data-sc-magnet="0.3">Visit ntoolz.net</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PROJECT: COPY TRADING -->
+<section class="proj proj--ct" data-sc-act="pin" data-sc-span="2.6" aria-labelledby="ct-title">
+  <div class="proj__stage" data-sc-stage>
+    <div class="wrap proj__grid">
+      <div class="proj__copy">
+        <h3 id="ct-title" class="proj__title">Anonymous Copy-Trading Platform</h3>
+        <p class="proj__meta mono">Solo founder and developer · Live since Oct 2026</p>
+        <p class="proj__lede">Reads trade signals from a Telegram VIP channel and places the same trade on every subscriber's own exchange account within seconds.</p>
+
+        <div class="steps">
+          <div class="step" data-sc-cue="0 0.36 0">
+            <h4>Reads the signal</h4>
+            <p>A Telegram listener understands short, informal admin posts, even Singlish split across messages. An AI verifier (Gemini, with Groq as backup) checks every entry before anything trades.</p>
+          </div>
+          <div class="step" data-sc-cue="0.34 0.68">
+            <h4>Copies it to every account</h4>
+            <p>Places the trade on each customer's own Binance, Bybit or MEXC futures account, sized to their balance, margin, leverage and take-profit choice.</p>
+          </div>
+          <div class="step" data-sc-cue="0.66 1">
+            <h4>Manages it to the close</h4>
+            <p>Stop-loss, take-profit ladders, DCA, break-even after TP1 and partial closes follow the admin in real time, with alerts in Sinhala and English.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj__media">
+        <div class="film">
+          <img class="sc-stage__poster" data-sc-poster src="assets/work/ct-film.webp" width="1280" height="720" alt="The Anonymous trading app on a phone, showing realized profit and loss">
+          <video data-sc-scrub data-sc-src="assets/work/ct-film.mp4" data-sc-src-mobile="assets/work/ct-film-m.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+        <div class="film__rail" aria-hidden="true"><i></i></div>
+        <dl class="stats">
+          <div><dt>Copied trades</dt><dd data-sc-count="0 9,624" data-sc-count-at="0.05 0.45">9,624</dd></div>
+          <div><dt>Accounts</dt><dd data-sc-count="0 175" data-sc-count-at="0.1 0.5">175</dd></div>
+          <div><dt>Signals read</dt><dd data-sc-count="0 5,543" data-sc-count-at="0.15 0.55">5,543</dd></div>
+          <div><dt>Post to fill</dt><dd>12–16 s</dd></div>
+        </dl>
+        <p class="proj__note">Production figures from 12 Nov 2026. Fill time was about 40 s before I profiled and batched the hot paths. Not affiliated with Binance, Bybit or MEXC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PROJECT: OVIX VPN -->
+<section class="proj proj--ovix" data-sc-act="pan" data-sc-span="2.8" aria-labelledby="ovix-title">
+  <div class="pan__stage" data-sc-stage>
+    <div class="pan__rail" data-sc-pan="0">
+      <article class="slot slot--intro">
+        <h3 id="ovix-title" class="proj__title">Ovix Store VPN</h3>
+        <p class="proj__meta mono">Solo founder and developer · Singapore server</p>
+        <p class="proj__lede">A paid VPN for Sri Lankan customers, with a fully redesigned control panel, reseller accounts and an abuse monitor I built on top of the open-source 3x-ui panel.</p>
+        <dl class="stats stats--2">
+          <div><dt>Paying customers</dt><dd>18</dd></div>
+          <div><dt>Data served</dt><dd><span>5.6</span> TB</dd></div>
+          <div><dt>Abuse incidents caught</dt><dd>156</dd></div>
+          <div><dt>Automated tests</dt><dd>3,569</dd></div>
+        </dl>
+        <a class="link-inline" href="https://vpn.ovix.store/" target="_blank" rel="noopener">vpn.ovix.store <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </article>
+
+      <figure class="slot slot--shot">
+        <div class="shot"><img src="assets/work/ovix-dash.webp" width="1600" height="1000" alt="Ovix panel dashboard in dark mode with live traffic cards and a network view" loading="lazy"></div>
+        <figcaption><strong>Live dashboard.</strong> Traffic, connections and an animated server to inbounds to clients view, with Ctrl K command search.</figcaption>
+      </figure>
+
+      <figure class="slot slot--shot">
+        <div class="shot"><img src="assets/work/ovix-map.webp" width="1600" height="1000" alt="Ovix client map centred on the Singapore server" loading="lazy"></div>
+        <figcaption><strong>Client map.</strong> IPs are geolocated offline on the server, so customer addresses are never sent to a third party.</figcaption>
+      </figure>
+
+      <figure class="slot slot--phones">
+        <div class="phones">
+          <div class="shot shot--phone"><img src="assets/work/ovix-phone.webp" width="480" height="1039" alt="Ovix dashboard on a phone" loading="lazy"></div>
+          <div class="shot shot--phone"><img src="assets/work/ovix-phone-clients.webp" width="480" height="1039" alt="Ovix clients list on a phone" loading="lazy"></div>
+        </div>
+        <figcaption><strong>Built for the phone.</strong> Owners and resellers create and renew customers in seconds from a bottom-nav layout.</figcaption>
+      </figure>
+
+      <figure class="slot slot--shot">
+        <div class="shot"><img src="assets/work/ovix-resellers.webp" width="1600" height="1000" alt="Ovix reseller management page" loading="lazy"></div>
+        <figcaption><strong>Reseller accounts.</strong> Prepaid credit taken and refunded inside database transactions, with every action written to an audit log.</figcaption>
+      </figure>
+
+      <article class="slot slot--stack">
+        <h4>How it's built</h4>
+        <ul class="chips">
+          <li>Go</li><li>Gin</li><li>GORM</li><li>SQLite</li><li>Xray-core</li><li>React 19</li><li>TypeScript</li><li>Ant Design</li><li>Vite</li><li>Python</li><li>GitHub Actions</li><li>Playwright</li>
+        </ul>
+        <p>Signed self-updates from GitHub releases, a torrent and abuse Sentinel with Discord alerts, and a tunnel test harness that checks leaks, speed and 64 parallel streams.</p>
+        <p class="proj__note">Ovix UI is a fork of 3x-ui by MHSanaei (GPL-3.0). The original credit and licence are kept. Screenshots use test data.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ WEBSITES -->
+<section class="section sites" data-sc-act="flow" aria-labelledby="sites-title">
+  <div class="wrap">
+    <header class="head">
+      <h2 id="sites-title" class="h2 split-lines">Websites and games.</h2>
+      <p class="head__lede" data-sc-in>Live sites I designed and built, for a trading community, a filmmaker and a game server.</p>
     </header>
-    <ol class="xp" data-sc-in data-sc-stagger="70">
-      <li class="xp__row">
+    <ul class="sites__grid" data-sc-in data-sc-stagger="90">
+      <li>
+        <a class="site" href="https://anonymous-website-mu.vercel.app" target="_blank" rel="noopener" data-sc-tilt="4">
+          <span class="site__chrome" aria-hidden="true"><i></i><i></i><i></i><span>anonymous-website-mu.vercel.app</span></span>
+          <span class="site__shot"><img src="assets/work/site-anonymous.webp" width="1200" height="750" alt="Anonymous Crypto Signal Network website" loading="lazy"></span>
+          <span class="site__body">
+            <strong>Anonymous · Crypto Signal Network</strong>
+            <span>Marketing site for the signal community behind the copy-trading platform.</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="site" href="https://dilshan-sajun-bandara.vercel.app" target="_blank" rel="noopener" data-sc-tilt="4">
+          <span class="site__chrome" aria-hidden="true"><i></i><i></i><i></i><span>dilshan-sajun-bandara.vercel.app</span></span>
+          <span class="site__shot"><img src="assets/work/site-dilshan.webp" width="1200" height="750" alt="Dilshan Sajun Bandara filmmaker portfolio website" loading="lazy"></span>
+          <span class="site__body">
+            <strong>Dilshan Sajun Bandara</strong>
+            <span>Portfolio for a Sri Lankan director, director of photography and colourist.</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="site" href="https://vanguard-web-nine.vercel.app" target="_blank" rel="noopener" data-sc-tilt="4">
+          <span class="site__chrome" aria-hidden="true"><i></i><i></i><i></i><span>vanguard-web-nine.vercel.app</span></span>
+          <span class="site__shot"><img src="assets/work/site-vanguard.webp" width="1200" height="750" alt="Vanguard RolePlay website" loading="lazy"></span>
+          <span class="site__body">
+            <strong>Vanguard RolePlay</strong>
+            <span>Website for a FiveM roleplay server. I also script FiveM servers in Lua.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ EXPERIENCE -->
+<section id="experience" class="section xp-sec" data-sc-act="flow">
+  <div class="wrap split">
+    <header class="head">
+      <h2 class="h2 split-lines">Where I work.</h2>
+    </header>
+    <ol class="xp">
+      <li class="xp__row" data-sc-in>
         <p class="xp__org">PYRAMIDZ</p>
         <div>
           <h3 class="xp__role">Live Sound Engineer</h3>
           <p>Live mixing for PYRAMIDZ shows.</p>
         </div>
       </li>
-      <li class="xp__row">
+      <li class="xp__row" data-sc-in>
+        <p class="xp__org">ntoolz.net</p>
+        <div>
+          <h3 class="xp__role">Founder and Senior Developer</h3>
+          <p>Trading automation, VPN infrastructure, game servers and websites, designed, built and run end to end.</p>
+        </div>
+      </li>
+      <li class="xp__row" data-sc-in>
         <p class="xp__org">NS Productions</p>
         <div>
           <h3 class="xp__role">Owner and CEO</h3>
           <p>My production company: live sound, audio post production and short-form video.</p>
         </div>
       </li>
-      <li class="xp__row">
-        <p class="xp__org">Independent</p>
-        <div>
-          <h3 class="xp__role">Senior Software, Game and Web Developer</h3>
-          <p>Software systems, games and websites.</p>
-        </div>
-      </li>
-      <li class="xp__row">
+      <li class="xp__row" data-sc-in>
         <p class="xp__org">Christ King College</p>
         <div>
           <h3 class="xp__role">Education</h3>
@@ -193,13 +386,11 @@
   </div>
 </section>
 
-<!-- ============================================================ WORK -->
-<!-- Project case studies slot in above .links once Nisal sends them. -->
-<section id="work" class="section" data-sc-act="flow">
+<!-- ============================================================ ELSEWHERE -->
+<section class="section elsewhere" data-sc-act="flow" aria-labelledby="else-title">
   <div class="wrap">
-    <header class="head" data-sc-in>
-      <h2 class="h2">See the work.</h2>
-      <p class="head__lede">Code lives on GitHub. Mixes, reels and behind-the-scenes from shows are on Instagram, TikTok and Facebook.</p>
+    <header class="head">
+      <h2 id="else-title" class="h2 split-lines">Find me online.</h2>
     </header>
     <ul class="links" data-sc-in data-sc-stagger="50">
       <li><a class="link" href="https://github.com/NisalShanuka" target="_blank" rel="noopener">
@@ -220,22 +411,23 @@
 <section id="contact" class="section contact" data-sc-act="flow">
   <div class="wrap">
     <div class="contact__card" data-sc-in>
-      <h2 class="h2 contact__title">Let's work together.</h2>
+      <h2 class="h2 contact__title split-lines">Let's work together.</h2>
       <p class="head__lede">A show that needs mixing, audio that needs finishing, or software, a game or a website to build. Send a message with the details and I'll get back to you.</p>
       <div class="hero__ctas">
-        <a class="btn" href="https://m.me/nisal.nisal.39108" target="_blank" rel="noopener">Message on Facebook</a>
-        <a class="btn btn--ghost" href="https://ig.me/m/_n_i_s_a_l_shanuka" target="_blank" rel="noopener">Message on Instagram</a>
-        <a class="btn btn--ghost" href="https://www.linkedin.com/in/nisal-shanuka-2b182b266" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn" href="https://m.me/nisal.nisal.39108" target="_blank" rel="noopener" data-sc-magnet="0.3">Message on Facebook</a>
+        <a class="btn btn--ghost" href="https://ig.me/m/_n_i_s_a_l_shanuka" target="_blank" rel="noopener" data-sc-magnet="0.3">Message on Instagram</a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/nisal-shanuka-2b182b266" target="_blank" rel="noopener" data-sc-magnet="0.3">Connect on LinkedIn</a>
       </div>
     </div>
   </div>
+  <p class="wordmark" aria-hidden="true"><span>Nisal Shanuka</span></p>
 </section>
 
 </main>
 
 <footer class="foot">
   <div class="wrap foot__in">
-    <p>© 2026 Nisal Shanuka Perera · NS Productions</p>
+    <p>© 2026 Nisal Shanuka Perera · ntoolz.net · NS Productions</p>
     <p>Ragama, Sri Lanka</p>
   </div>
 </footer>
