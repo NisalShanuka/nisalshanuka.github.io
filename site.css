@@ -9,8 +9,8 @@
   --ink:       #F3F6FC;
   --ink-2:     #B4BDD0;
   --ink-3:     #8A95AC;
-  --accent:    #2F6BFF;
-  --accent-hi: #4A80FF;
+  --accent:    #2963F2;
+  --accent-hi: #1F55DB;
   --frost:     #CFE3FF;
   --line:        color-mix(in oklab, var(--frost) 10%, transparent);
   --line-strong: color-mix(in oklab, var(--frost) 18%, transparent);
@@ -21,9 +21,9 @@
   --sc-ink-soft: var(--ink-2);
   --sc-accent: var(--accent);
   --sc-accent-ink: #FFFFFF;
-  --sc-font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --sc-font-text: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --sc-font-mono: "Geist Mono", ui-monospace, monospace;
+  --sc-font-display: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --sc-font-text: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --sc-font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   --maxw: 1180px;
   --gutter: clamp(20px, 4vw, 40px);
@@ -66,13 +66,6 @@ a { color: inherit; }
   font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-3);
 }
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--sc-font-mono);
-  font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--frost);
-}
-.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
 /* ---------------------------------------------------------------- buttons */
 .btn {
@@ -112,12 +105,6 @@ a { color: inherit; }
 
 /* ---------------------------------------------------------------- hero */
 .hero { padding-top: calc(var(--bar-h) + clamp(48px, 9vh, 104px)); padding-bottom: clamp(64px, 10vh, 120px); position: relative; isolation: isolate; }
-.hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(60% 55% at 78% 30%, color-mix(in oklab, var(--navy) 55%, transparent), transparent 70%),
-    linear-gradient(180deg, transparent 70%, var(--bg));
-}
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
 .hero__copy { display: grid; gap: 24px; }
 .hero__title {
@@ -141,7 +128,7 @@ a { color: inherit; }
 .portrait__frame {
   position: relative; aspect-ratio: 4 / 5; overflow: hidden;
   border-radius: 20px; border: 1px solid var(--line-strong);
-  background: radial-gradient(110% 70% at 50% 0%, #1A2C5C 0%, #0E1730 45%, var(--surface) 80%);
+  background: linear-gradient(180deg, #16244A 0%, #0D1529 62%, var(--surface) 100%);
 }
 .portrait__frame::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 28%;
@@ -221,9 +208,7 @@ a { color: inherit; }
   display: grid; gap: 18px; justify-items: start;
   padding: clamp(32px, 6vw, 72px);
   border-radius: 24px; border: 1px solid var(--line-strong);
-  background:
-    radial-gradient(80% 120% at 100% 0%, color-mix(in oklab, var(--navy) 70%, transparent), transparent 60%),
-    var(--surface);
+  background: linear-gradient(180deg, #0F1830, var(--surface));
 }
 .contact__title { font-size: clamp(2.4rem, 5vw, 4rem); }
 .contact__card .hero__ctas { margin-top: 10px; }
