@@ -93,7 +93,7 @@
 <!-- ============================================================ HERO -->
 <section id="top" class="hero" data-sc-act="pin" data-sc-span="1.35">
   <div class="hero__stage" data-sc-stage>
-    <canvas class="signal" aria-hidden="true"></canvas>
+    <canvas class="bg" data-bg="field" aria-hidden="true"></canvas>
     <div class="wrap hero__grid">
       <div class="hero__copy">
         <h1 class="hero__title">
@@ -145,7 +145,8 @@
 
 <!-- ============================================================ SERVICES -->
 <!-- Signature move: the crossfader. Scroll slides it from the audio desk to the code desk. -->
-<section id="services" class="section services" data-sc-act="flow">
+<section id="services" class="section services has-bg" data-sc-act="flow">
+  <canvas class="bg" data-bg="desk" aria-hidden="true"></canvas>
   <div class="wrap">
     <header class="head">
       <h2 class="h2 split-lines">Two disciplines, one standard of detail.</h2>
@@ -201,7 +202,8 @@
 </section>
 
 <!-- ============================================================ WORK INTRO -->
-<section id="work" class="section work-intro" data-sc-act="flow">
+<section id="work" class="section work-intro has-bg">
+  <canvas class="bg" data-bg="network" aria-hidden="true"></canvas>
   <div class="wrap work-intro__grid">
     <h2 class="h2 h2--xl split-lines">Selected work from ntoolz.net.</h2>
     <div class="work-intro__side" data-sc-in>
@@ -214,6 +216,7 @@
 <!-- ============================================================ PROJECT: COPY TRADING -->
 <section class="proj proj--ct" data-sc-act="pin" data-sc-span="2.6" aria-labelledby="ct-title">
   <div class="proj__stage" data-sc-stage>
+    <canvas class="bg" data-bg="chart" aria-hidden="true"></canvas>
     <div class="wrap proj__grid">
       <div class="proj__copy">
         <h3 id="ct-title" class="proj__title">Anonymous Copy-Trading Platform</h3>
@@ -257,6 +260,7 @@
 <!-- ============================================================ PROJECT: OVIX VPN -->
 <section class="proj proj--ovix" data-sc-act="pan" data-sc-span="2.8" aria-labelledby="ovix-title">
   <div class="pan__stage" data-sc-stage>
+    <canvas class="bg" data-bg="streams" aria-hidden="true"></canvas>
     <div class="pan__rail" data-sc-pan="0">
       <article class="slot slot--intro">
         <h3 id="ovix-title" class="proj__title">Ovix Store VPN</h3>
@@ -307,7 +311,8 @@
 </section>
 
 <!-- ============================================================ WEBSITES -->
-<section class="section sites" data-sc-act="flow" aria-labelledby="sites-title">
+<section class="section sites has-bg" aria-labelledby="sites-title">
+  <canvas class="bg" data-bg="layout" aria-hidden="true"></canvas>
   <div class="wrap">
     <header class="head">
       <h2 id="sites-title" class="h2 split-lines">Websites and games.</h2>
@@ -349,7 +354,8 @@
 </section>
 
 <!-- ============================================================ EXPERIENCE -->
-<section id="experience" class="section xp-sec" data-sc-act="flow">
+<section id="experience" class="section xp-sec has-bg" data-sc-act="flow">
+  <canvas class="bg" data-bg="arrange" aria-hidden="true"></canvas>
   <div class="wrap split">
     <header class="head">
       <h2 class="h2 split-lines">Where I work.</h2>
@@ -387,7 +393,7 @@
 </section>
 
 <!-- ============================================================ ELSEWHERE -->
-<section class="section elsewhere" data-sc-act="flow" aria-labelledby="else-title">
+<section class="section elsewhere" aria-labelledby="else-title">
   <div class="wrap">
     <header class="head">
       <h2 id="else-title" class="h2 split-lines">Find me online.</h2>
@@ -408,7 +414,8 @@
 </section>
 
 <!-- ============================================================ CONTACT -->
-<section id="contact" class="section contact" data-sc-act="flow">
+<section id="contact" class="section contact has-bg" data-sc-act="flow">
+  <canvas class="bg" data-bg="field-calm" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="contact__card" data-sc-in>
       <h2 class="h2 contact__title split-lines">Let's work together.</h2>
@@ -433,7 +440,24 @@
 </footer>
 
 <script src="scrollcraft.js"></script>
-<script>ScrollCraft.mount(document.body);</script>
+<script>
+  /* Phones: the product film loops instead of scrubbing. Scroll-seeking a
+     video on a phone decoder is the main source of scroll jank. */
+  (function () {
+    var mq = window.matchMedia;
+    var phone = mq && (mq('(hover: none), (pointer: coarse)').matches || mq('(max-width: 760px)').matches);
+    var still = mq && mq('(prefers-reduced-motion: reduce)').matches;
+    var v = document.querySelector('.film video[data-sc-scrub]');
+    if (v && phone && !still) {
+      v.removeAttribute('data-sc-scrub');
+      v.src = v.getAttribute('data-sc-src-mobile') || v.getAttribute('data-sc-src');
+      v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'metadata';
+      v.setAttribute('muted', ''); v.setAttribute('loop', ''); v.setAttribute('playsinline', '');
+      v.classList.add('is-loop');
+    }
+  })();
+  ScrollCraft.mount(document.body);
+</script>
 <script src="site.js" defer></script>
 </body>
 </html>
